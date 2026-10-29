@@ -60,4 +60,9 @@ The tests need a small HD2SDK test scene made from game assets, which is not in 
 
 ## License
 
-MIT, see [LICENSE](LICENSE). `tools/_vendor/tomli` is MIT too (its own license file is next to it).
+**Do whatever you like with it**: use it, change it, fork it, take it over, include it in your own tools or mods.
+The one condition is **credit**: keep the license file with OceanMan's name in your copy, and mention HD2 Dress /
+OceanMan as the origin when you share or release something built from it.
+
+Formally this is the MIT license, see [LICENSE](LICENSE). `tools/_vendor/tomli` is MIT too (its own license file is next
+to it).
