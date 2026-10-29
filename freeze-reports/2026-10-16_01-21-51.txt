@@ -1,0 +1,41 @@
+HD2 freeze report 2026-10-16 01:21:52  (pid 226270)
+heartbeat unchanged for 8.0 s: frame 16886 t 281.31 mode 0 stage render: dress step
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '3891884 kB', 'VmSwap': '0 kB', 'Threads': '18'}   system: {'MemAvailable': '15196156 kB', 'SwapFree': '35075008 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+      0%  tid 226270  helldivers2.exe  state S  wchan poll_schedule_timeout.constprop.0 pselect6
+      0%  tid 226521  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226522  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226523  mangohud-amdgpu  state S  wchan hrtimer_nanosleep        clock_nanosleep
+      0%  tid 226536  helldivers2.exe  state S  wchan hrtimer_nanosleep        clock_nanosleep
+      0%  tid 226541  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226542  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226555  helldivers2.exe  state S  wchan hrtimer_nanosleep        clock_nanosleep
+      0%  tid 226579  helldivers2.exe  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226598  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226599  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226612  renderer         state S  wchan hrtimer_nanosleep        clock_nanosleep
+      0%  tid 226613  renderer         state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226614  renderer         state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 226943  helldivers2.exe  state S  wchan ep_poll                  epoll_wait
+      0%  tid 227958  helldiv:disk$1   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 227959  helldiv:disk$2   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 227960  helldiv:disk$3   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+
+HD2Dress.log (last 25 lines):
+  HD2 Dress 0.5.1
+  [    0.0] [gate] key home cycles the test
+  [    0.0] [gate] loaded; wear B-01 Tactical, press home to cycle
+  [    0.0] [gate] render hook ready
+  [    0.0] [dress] none of the registered dresses is worn here
+  [    0.0] [gate] no B-01 Tactical hip piece in this world: wear B-01 Tactical (any variation)
+  [   12.1] [gate] the B-01 hip piece has no dress_test bones: is the gate armour patch installed (and the Jaeger B-01 patch disabled)? nodes: nil nil nil 7
+  [  240.5] [gate] 2 B-01 hip pieces here (2 Helldivers): using the one nearest the first Helldiver; best solo
+  [  276.5] [dress] found "Arknight Endfield Xaihi EX-00 / Torso_Undergarment_Stocky_lod0": 12 chains x 6 bones, 1 tail(s); legs found (collision on)
+  [  276.5] [dress] 1 frames, 4.00 ms per frame, 0 collision pushes
+
+HD2Dress_trace.csv (last 5 rows):
+
+kernel messages (last 2 min, GPU/OOM related):
+  (none)

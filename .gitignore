@@ -1,0 +1,10 @@
+dist/
+dist/**/cloth_*.bin
+dist/other/test-*/
+dist/**/*.patch_*
+*.patch_*
+*.pyc
+__pycache__/
+sim/anims/
+sim/work/
+tests/fixtures/

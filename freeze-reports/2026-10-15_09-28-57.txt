@@ -1,0 +1,46 @@
+HD2 freeze report 2026-10-15 09:28:58  (pid 468806)
+heartbeat unchanged for 8.0 s: (no heartbeat: HD2 Dress not loaded?)
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '27288 kB', 'VmSwap': '0 kB', 'Threads': '1'}   system: {'MemAvailable': '19590136 kB', 'SwapFree': '36075656 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+      0%  tid 468806  python3          state S  wchan do_wait                  wait4
+
+HD2Dress.log (last 25 lines):
+  [   54.1] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   56.2] [gate] hold @render: 35 frames, kept 35, reset 0, other 0 (writes 35, fails 0); flap angle 31.0 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   56.2] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   58.2] [gate] hold @render: 37 frames, kept 37, reset 0, other 0 (writes 37, fails 0); flap angle 35.9 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   58.2] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   58.3] [gate] mode -> hold @update
+  [   60.3] [gate] hold @update: 39 frames, kept 39, reset 0, other 0 (writes 39, fails 0); flap angle 40.8 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   60.3] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   62.4] [gate] hold @update: 35 frames, kept 35, reset 0, other 0 (writes 35, fails 0); flap angle 30.3 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   62.4] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   64.4] [gate] hold @update: 41 frames, kept 41, reset 0, other 0 (writes 41, fails 0); flap angle 30.7 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   64.4] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   66.4] [gate] hold @update: 35 frames, kept 35, reset 0, other 0 (writes 35, fails 0); flap angle 30.8 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   66.4] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   68.5] [gate] hold @update: 37 frames, kept 37, reset 0, other 0 (writes 37, fails 0); flap angle 30.1 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   68.5] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   70.5] [gate] hold @update: 39 frames, kept 39, reset 0, other 0 (writes 39, fails 0); flap angle 30.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   70.5] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   72.6] [gate] hold @update: 34 frames, kept 34, reset 0, other 0 (writes 34, fails 0); flap angle 31.4 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   72.6] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   74.0] [gate] mode -> once (write one time, then only read)
+  [   76.0] [gate] once (write one time, then only read): 37 frames, kept 36, reset 0, other 0 (writes 1, fails 0); flap angle 37.3 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   76.0] [gate]   vs the control flap (world): avg 43.8, min 0.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+  [   78.1] [gate] once (write one time, then only read): 37 frames, kept 37, reset 0, other 0 (writes 0, fails 0); flap angle 30.2 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [   78.1] [gate]   vs the control flap (world): avg 45.0, min 45.0, max 45.0 deg; flap tip (child bone) in the pelvis frame -0.164 0.021 0.100
+
+HD2Dress_trace.csv (last 5 rows):
+  77.870,3,45.0,45.00,29.49,-0.0486,-0.1423,0.1000,-0.1637,0.0212,0.1000,-0.0486,-0.1423,-0.1000,-1.236,-5.872,20.884
+  77.920,3,45.0,45.00,29.41,-0.0486,-0.1423,0.1000,-0.1637,0.0212,0.1000,-0.0486,-0.1423,-0.1000,-1.042,-5.821,20.916
+  77.972,3,45.0,45.00,29.67,-0.0486,-0.1423,0.1000,-0.1637,0.0212,0.1000,-0.0486,-0.1423,-0.1000,-0.844,-5.768,20.937
+  78.022,3,45.0,45.00,29.68,-0.0486,-0.1423,0.1000,-0.1637,0.0212,0.1000,-0.0486,-0.1423,-0.1000,-0.651,-5.716,20.940
+  78.073,3,45.0,45.00,30.12,-0.0486,-0.1423,0.1000,-0.1637,0.0212,0.1000,-0.0486,-0.1423,-0.1000,-0.455,-5.665,20.922
+
+kernel messages (last 2 min, GPU/OOM related):
+  (none)
+
+RESUMED after 12.0 s (a long hitch, not a freeze): frame 26 t 0.54 mode 0 stage render: done (between frames)

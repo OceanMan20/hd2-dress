@@ -1,0 +1,52 @@
+HD2 freeze report 2026-10-16 02:04:53  (pid 269725)
+heartbeat unchanged for 8.0 s: frame 58791 t 937.24 mode 0 stage update: done
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '352720 kB', 'VmSwap': '0 kB', 'Threads': '12'}   system: {'MemAvailable': '18483776 kB', 'SwapFree': '35007280 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+     73%  tid 269725  helldivers2.exe  state R  wchan 0                        running
+      0%  tid 269814  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269868  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269874  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269875  FileCommandMana  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 269876  NxStorage Copy   state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269877  helldivers2.exe  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 269878  DirectStorage W  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269879  wine_threadpool  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 269880  wine_threadpool  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269881  NxStorage Comma  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 269896  helldivers2.exe  state S  wchan anon_pipe_read           syscall 19
+
+HD2Dress.log (last 25 lines):
+  [  702.8] [dress] 600 frames, 1.17 ms per frame, 26048 collision pushes
+  [  712.8] [dress] 600 frames, 1.18 ms per frame, 26050 collision pushes
+  [  722.8] [dress] 600 frames, 1.15 ms per frame, 26042 collision pushes
+  [  732.8] [dress] 600 frames, 1.15 ms per frame, 26044 collision pushes
+  [  742.8] [dress] 600 frames, 1.15 ms per frame, 26052 collision pushes
+  [  752.8] [dress] 600 frames, 1.14 ms per frame, 26025 collision pushes
+  [  762.8] [dress] 600 frames, 1.10 ms per frame, 26038 collision pushes
+  [  772.8] [dress] 600 frames, 1.13 ms per frame, 26097 collision pushes
+  [  782.8] [dress] 600 frames, 1.13 ms per frame, 26070 collision pushes
+  [  792.8] [dress] 600 frames, 1.11 ms per frame, 26134 collision pushes
+  [  794.8] [chain] settings changed: DAMPING=0.4 SHAPE=0.12 SHAPE_HEM=0.07 MAX_ANGLE=60 DAMPING_HEM=0.25 MARGIN=0.03 THIGH_R=0.085
+  [  802.8] [dress] 600 frames, 0.77 ms per frame, 6840 collision pushes
+  [  812.8] [dress] 600 frames, 0.67 ms per frame, 2094 collision pushes
+  [  822.8] [dress] 600 frames, 0.68 ms per frame, 2028 collision pushes
+  [  832.8] [dress] 600 frames, 0.67 ms per frame, 1961 collision pushes
+  [  842.8] [dress] 600 frames, 0.68 ms per frame, 2049 collision pushes
+  [  852.8] [dress] 600 frames, 0.65 ms per frame, 2067 collision pushes
+  [  862.8] [dress] 600 frames, 0.68 ms per frame, 2016 collision pushes
+  [  872.8] [dress] 600 frames, 0.63 ms per frame, 1902 collision pushes
+  [  882.8] [dress] 600 frames, 0.64 ms per frame, 2038 collision pushes
+  [  892.9] [dress] 600 frames, 0.66 ms per frame, 2105 collision pushes
+  [  902.9] [dress] 600 frames, 0.68 ms per frame, 1950 collision pushes
+  [  912.9] [dress] 600 frames, 0.63 ms per frame, 1915 collision pushes
+  [  922.9] [dress] 600 frames, 0.67 ms per frame, 2005 collision pushes
+  [  932.9] [dress] 600 frames, 0.64 ms per frame, 1961 collision pushes
+
+HD2Dress_trace.csv (last 5 rows):
+
+kernel messages (last 2 min, GPU/OOM related):
+  (none)
+
+RESUMED after 14.1 s (a long hitch, not a freeze): frame 1 t 0.00 mode 0 stage update: game update (not ours)

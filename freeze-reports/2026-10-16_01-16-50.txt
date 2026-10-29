@@ -1,0 +1,17 @@
+HD2 freeze report 2026-10-16 01:16:51  (pid 226270)
+heartbeat unchanged for 8.0 s: (no heartbeat: HD2 Dress not loaded?)
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '217528 kB', 'VmSwap': '0 kB', 'Threads': '2'}   system: {'MemAvailable': '18878052 kB', 'SwapFree': '35364652 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+      2%  tid 226270  helldivers2.exe  state R  wchan 0                        running
+      0%  tid 226373  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+
+HD2Dress.log (last 25 lines):
+
+HD2Dress_trace.csv (last 5 rows):
+
+kernel messages (last 2 min, GPU/OOM related):
+  (none)
+
+RESUMED after 15.7 s (a long hitch, not a freeze): frame 60 t 0.46 mode 0 stage update: game update (not ours)

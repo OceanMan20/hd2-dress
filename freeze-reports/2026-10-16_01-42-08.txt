@@ -1,0 +1,44 @@
+HD2 freeze report 2026-10-16 01:42:09  (pid 250167)
+heartbeat unchanged for 8.0 s: frame 17426 t 290.48 mode 0 stage render: done (between frames)
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '253960 kB', 'VmSwap': '0 kB', 'Threads': '4'}   system: {'MemAvailable': '18662348 kB', 'SwapFree': '34797928 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+     96%  tid 250167  helldivers2.exe  state R  wchan 0                        running
+      0%  tid 250264  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 250327  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 250332  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+
+HD2Dress.log (last 25 lines):
+  [   64.3] [dress] physics ON
+  [   68.1] [dress] 502 frames, 0.72 ms per frame, 2232 collision pushes
+  [   78.1] [dress] 600 frames, 0.62 ms per frame, 791 collision pushes
+  [   88.1] [dress] 600 frames, 0.74 ms per frame, 2015 collision pushes
+  [   98.1] [dress] 600 frames, 0.63 ms per frame, 138 collision pushes
+  [  108.1] [dress] 600 frames, 0.68 ms per frame, 26 collision pushes
+  [  118.1] [dress] 600 frames, 0.64 ms per frame, 37 collision pushes
+  [  128.1] [dress] 600 frames, 0.68 ms per frame, 137 collision pushes
+  [  138.1] [dress] 600 frames, 0.68 ms per frame, 33 collision pushes
+  [  142.2] [chain] settings changed: MARGIN=0.06 THIGH_R=0.1
+  [  148.1] [dress] 600 frames, 0.76 ms per frame, 714 collision pushes
+  [  158.1] [dress] 600 frames, 0.85 ms per frame, 1273 collision pushes
+  [  168.1] [dress] 600 frames, 0.72 ms per frame, 1099 collision pushes
+  [  178.2] [dress] 600 frames, 0.75 ms per frame, 1162 collision pushes
+  [  188.2] [dress] 600 frames, 0.78 ms per frame, 1282 collision pushes
+  [  198.2] [dress] 600 frames, 0.77 ms per frame, 1086 collision pushes
+  [  208.2] [dress] 600 frames, 0.80 ms per frame, 1164 collision pushes
+  [  218.2] [dress] 600 frames, 0.79 ms per frame, 1282 collision pushes
+  [  228.2] [dress] 600 frames, 0.76 ms per frame, 1089 collision pushes
+  [  238.2] [dress] 600 frames, 0.75 ms per frame, 2309 collision pushes
+  [  248.2] [dress] 600 frames, 0.78 ms per frame, 2938 collision pushes
+  [  258.2] [dress] 600 frames, 0.75 ms per frame, 3114 collision pushes
+  [  268.2] [dress] 600 frames, 0.82 ms per frame, 5906 collision pushes
+  [  278.2] [dress] 600 frames, 0.86 ms per frame, 5420 collision pushes
+  [  288.2] [dress] 600 frames, 0.82 ms per frame, 5153 collision pushes
+
+HD2Dress_trace.csv (last 5 rows):
+
+kernel messages (last 2 min, GPU/OOM related):
+  (none)
+
+RESUMED after 14.5 s (a long hitch, not a freeze): frame 46 t 0.44 mode 0 stage render: done (between frames)

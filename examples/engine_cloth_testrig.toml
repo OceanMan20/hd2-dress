@@ -1,0 +1,176 @@
+# HD2 Dress engine cloth settings (no Lua). Edit in any text editor, then build:
+#   blender -b -P tools/hd2dress_cloth.py -- build examples/engine_cloth_testrig.toml [--install]
+# Every value below has a default (the tested values in docs/ENGINE_CLOTH_VALUES.md); delete a line to use it.
+# Paths are relative to this file. Lengths in metres.
+
+name = "HD2 Dress test rig (B-01 hips, floor skirt)"
+cloth_name = "hd2dress_testrig"          # unique per mod: the cloth's name in the game (its hash is the key)
+armour_patch = "~/.cache/hd2-dress/testrig_skirt_root/9ba626afa44a3aa3.patch_0"   # your HD2SDK armour patch
+# blend = "my_dress.blend"               # your .blend, when the cloth is chosen by a vertex group
+# archives = ["562a45e9bc984eb9"]        # optional: limit to these archives (default: every archive with the unit)
+out = "../dist/hd2dress_testrig"         # where the cloth patches go (default dist/<cloth_name>)
+
+# One block per armour unit that gets cloth (e.g. the slim and the stocky body version).
+# mesh_name must be the mesh's node name in the unit (the build checks its hash).
+[[unit]]
+id = "2f66b9373cb58485"                  # Hip_Armor_Slim
+mesh_name = "g_legs_hips_female"
+[[unit]]
+id = "0387a158d04848f4"                  # Hip_Armor_Stocky
+mesh_name = "g_legs_hips_male"
+# per unit you can also set: mesh_id = 123 (default: the LOD0 mesh), bones = [...]
+
+[cloth]
+# Which vertices are cloth (pick one):
+#   vertex_group = "cloth"               # vertices in this group in your .blend (weight > 0.5)
+#   material_slot = 1                    # every face of this material slot
+positions_file = "~/.cache/hd2-dress/testrig_skirt_root/testrig_strips.json"   # (test rig only) listed positions
+# The top row of each connected cloth piece is pinned to the body.
+pin_tolerance = 0.002                    # how far below the top a vertex still counts as the top row
+# bones = [...]                          # default: every collision bone the unit has (skeleton, root, hips,
+                                         # thighs, knees, feet, spine1/2, chest, neck, head, clavicles,
+                                         # shoulders, elbows)
+
+# The cloth's LOOK. shader = "character" (default): a normal character shader with your own colour map (+ normal map),
+# matte, easy to paint. Its one limit: the lighting does not follow the cloth's folds (the folds still show by shape and
+# shadow). The mesh needs 'root' in its bone palette: give ONE cloth vertex a 0.001 weight in a 'root' vertex group.
+# shader = "cape": the cape's zone/decal system (lighting follows folds; colours via zones or a full-cover decal).
+[look]
+shader = "character"
+color = "~/.cache/hd2-dress/look/tartan_color.png"     # colour map on the mesh UVs (PNG/JPG, up to 2048)
+normal = "~/.cache/hd2-dress/look/tartan_normal.png"   # optional normal map (OpenGL / Blender style)
+# normal_flip_green = true                             # for DirectX-style normal maps
+roughness = 0.7                                        # 0 = glossy, 1 = matte (used with the normal map)
+# ao = "my_ao.png"                                     # optional ambient occlusion map
+# material_id = 7200101010101010101                    # default: read from the mesh (the cloth faces' material)
+
+[sim]
+substeps = 1          # physics steps per frame. KEEP 1: above 1 the game draws garbage spikes on cloned
+                      # divers (hellpod/armory preview), stock capes too (engine bug, 2026-10-18)
+iterations = 4        # solver passes per step: 4 holds the knee at 1 substep (hem rides a bit higher)
+link_passes = 3       # extra neighbour-link passes per iteration
+radius = 0.025        # collision ball around each cloth point. 0.025 tested best (0.02 left a tiny hole at the
+                      # knee, 0.03 floats off the legs)
+friction = 0.3        # 0.3 lets the knee slide under the cloth (0.8 carried the skirt up the leg in a kneel)
+landscape_radius = 0.015   # gap the cloth keeps off the floor and level geometry (cape 0.07; big gaps pinch the
+                           # cloth between a kneeling knee and the floor)
+gravity = 14.0        # this cloth only. Stronger = reads heavier (falls faster, less floaty); 9.81 = normal
+damping = 0.7
+wind = 1.0            # the game's wind (Super Destroyer breeze): 0 off, 1 like the stock cape, 2 double
+
+# Settings for every cloth piece. A closed ring (a skirt) always uses these.
+[part]
+mass = 0.004          # per cloth point
+stiffness = 1.0       # neighbour links: keep 1.0 (0.7 opened gaps the knee slipped through)
+leash = 1.0           # how far a point may move from where it normally hangs. The thigh-follow targets swing
+                      # up in a kneel and a tight leash (0.55) drags the hem up after them; 1.0 = barely any pull
+                      # went through the skirt in the thumbs-up kneel; looser = less safety net
+stretch = 0.60        # how much longer than at rest a point may get from the waist row (0.60 = 1.6x)
+bend = 0.24           # resistance to folding (0.8 = the cape; stiff, the skirt stood out like a cone)
+# inward = 0.10       # leash normal limit: how far a point may sink behind its rest spot. 0.03 and 0.10 made
+                      # the skirt climb the thigh in a kneel; bone planes do this job better. Off
+                      # stuck on the wrong side of a leg; pushing outward stays free. Delete = off
+
+# Separate strips (not a closed ring) can get their own settings by their angle around the body
+# (0 = front, 90 = left, 180 = back, 270 = right); the nearest entry wins. Missing keys come from [part].
+# (test rig: 12 shoulder strips, every 30 degrees, cycling 4 test settings)
+[[parts]]
+angle = 0
+mass = 0.003
+stiffness = 1.0
+leash = 0.05
+stretch = 0.05
+[[parts]]
+angle = 30
+mass = 0.006
+stiffness = 0.6
+leash = 0.15
+stretch = 0.05
+[[parts]]
+angle = 60
+mass = 0.003
+stiffness = 0.3
+leash = 0.3
+stretch = 0.05
+[[parts]]
+angle = 90
+mass = 0.01
+stiffness = 1.0
+leash = 0.6
+stretch = 0.05
+[[parts]]
+angle = 120
+mass = 0.003
+stiffness = 1.0
+leash = 0.05
+stretch = 0.05
+[[parts]]
+angle = 150
+mass = 0.006
+stiffness = 0.6
+leash = 0.15
+stretch = 0.05
+[[parts]]
+angle = 180
+mass = 0.003
+stiffness = 0.3
+leash = 0.3
+stretch = 0.05
+[[parts]]
+angle = 210
+mass = 0.01
+stiffness = 1.0
+leash = 0.6
+stretch = 0.05
+[[parts]]
+angle = 240
+mass = 0.003
+stiffness = 1.0
+leash = 0.05
+stretch = 0.05
+[[parts]]
+angle = 270
+mass = 0.006
+stiffness = 0.6
+leash = 0.15
+stretch = 0.05
+[[parts]]
+angle = 300
+mass = 0.003
+stiffness = 0.3
+leash = 0.3
+stretch = 0.05
+[[parts]]
+angle = 330
+mass = 0.01
+stiffness = 1.0
+leash = 0.6
+stretch = 0.05
+
+# Skirts: the lower skirt follows the thigh on its side, so a raised knee lifts the fabric instead of
+# pushing through it. Needs both thigh bones.
+[follow]
+thigh = 0.6           # 0 = off; how much of the hem follows the thigh
+front = true          # the front half follows its own side's thigh (fixes the thumbs-up emote)
+
+# Fast moves carry the cloth along with the hips instead of leaving it behind.
+[motion]
+minTranslationSpeed = 0.5
+maxTranslationSpeed = 2.0
+minRotationSpeed = 90.0
+maxRotationSpeed = 360.0
+
+# Bone planes (what the stock cape uses against clipping): each loose point near a leg gets an invisible wall on
+# the nearest leg capsule (thigh or shin), on the side facing the point. The wall moves with the leg, so the leg can
+# never get to the wrong side of the fabric: a raised thigh lifts the cloth, a shin keeps it in front.
+[planes]
+enabled = true
+reach = 0.15          # points within this distance of a leg surface get a wall (m)
+margin = 0.0          # extra distance of the wall from the capsule surface (m)
+# stiffness = 1.0
+# bones = ["l_thigh", "r_thigh", "l_knee", "r_knee"]   # knee = the shin capsule
+
+[collision]
+# grow = { l_thigh = 0.02, r_thigh = 0.02 }      # thicker body capsules (+m). Over +2 cm reads as "tubes"
+extra = { l_knee = { start = -0.05, end = 0.05, grow = 0.03 }, r_knee = { start = -0.05, end = 0.05, grow = 0.03 } }
+# ^ kneecaps: an extra short capsule on the knee joint, 3 cm thicker than the shin, so collision matches the kneepad

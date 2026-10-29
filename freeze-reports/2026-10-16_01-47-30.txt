@@ -1,0 +1,56 @@
+HD2 freeze report 2026-10-16 01:47:31  (pid 255514)
+heartbeat unchanged for 8.0 s: frame 15901 t 264.71 mode 0 stage render: done (between frames)
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '576292 kB', 'VmSwap': '0 kB', 'Threads': '16'}   system: {'MemAvailable': '18415784 kB', 'SwapFree': '34584828 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+     79%  tid 255514  helldivers2.exe  state R  wchan 0                        running
+      0%  tid 255599  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255738  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255745  helldivers2.exe  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255746  FileCommandMana  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 255747  NxStorage Copy   state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255750  helldivers2.exe  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 255751  DirectStorage W  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255752  wine_threadpool  state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 255753  wine_threadpool  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255754  NxStorage Comma  state S  wchan futex_wait_multiple      syscall 449
+      0%  tid 255765  helldivers2.exe  state S  wchan anon_pipe_read           syscall 19
+      0%  tid 255778  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 255779  helldiv:disk$0   state S  wchan futex_do_wait            futex (waiting on a lock/event)
+      0%  tid 255780  mangohud-amdgpu  state S  wchan hrtimer_nanosleep        clock_nanosleep
+      0%  tid 255793  helldivers2.exe  state S  wchan hrtimer_nanosleep        clock_nanosleep
+
+HD2Dress.log (last 25 lines):
+  [   24.0] [dress] 599 frames, 1.15 ms per frame, 29858 collision pushes
+  [   34.1] [dress] 600 frames, 1.14 ms per frame, 26382 collision pushes
+  [   44.1] [dress] 600 frames, 1.12 ms per frame, 23314 collision pushes
+  [   54.1] [dress] 600 frames, 1.09 ms per frame, 23468 collision pushes
+  [   64.1] [dress] 600 frames, 1.09 ms per frame, 26657 collision pushes
+  [   74.1] [dress] 600 frames, 1.10 ms per frame, 28538 collision pushes
+  [   84.1] [dress] 599 frames, 1.11 ms per frame, 29617 collision pushes
+  [   94.1] [dress] 600 frames, 1.13 ms per frame, 29840 collision pushes
+  [  104.1] [dress] 600 frames, 1.11 ms per frame, 28233 collision pushes
+  [  114.1] [dress] 600 frames, 1.13 ms per frame, 28735 collision pushes
+  [  124.1] [dress] 600 frames, 1.16 ms per frame, 28702 collision pushes
+  [  134.1] [dress] 599 frames, 1.20 ms per frame, 28037 collision pushes
+  [  144.1] [dress] 598 frames, 1.30 ms per frame, 28594 collision pushes
+  [  154.1] [dress] 599 frames, 1.27 ms per frame, 28661 collision pushes
+  [  164.1] [dress] 599 frames, 1.30 ms per frame, 28066 collision pushes
+  [  174.1] [dress] 600 frames, 1.18 ms per frame, 28744 collision pushes
+  [  184.1] [dress] 599 frames, 1.20 ms per frame, 28777 collision pushes
+  [  194.1] [dress] 600 frames, 1.11 ms per frame, 28091 collision pushes
+  [  204.1] [dress] 599 frames, 1.15 ms per frame, 28710 collision pushes
+  [  214.1] [dress] 600 frames, 1.11 ms per frame, 28939 collision pushes
+  [  224.2] [dress] 600 frames, 1.11 ms per frame, 27955 collision pushes
+  [  234.2] [dress] 600 frames, 1.09 ms per frame, 28216 collision pushes
+  [  244.2] [dress] 600 frames, 1.09 ms per frame, 28831 collision pushes
+  [  254.2] [dress] 600 frames, 1.12 ms per frame, 29037 collision pushes
+  [  264.2] [dress] 600 frames, 1.16 ms per frame, 28019 collision pushes
+
+HD2Dress_trace.csv (last 5 rows):
+
+kernel messages (last 2 min, GPU/OOM related):
+  (none)
+
+RESUMED after 13.5 s (a long hitch, not a freeze): frame 3 t 0.24 mode 0 stage render: done (between frames)

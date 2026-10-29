@@ -1,0 +1,45 @@
+HD2 freeze report 2026-10-15 09:31:16  (pid 468806)
+heartbeat unchanged for 8.0 s: frame 2587 t 125.66 mode 5 stage render: done (between frames)
+  -> "(not ours)" stage = hung in the game's own code; any other stage = in HD2 Dress at that step
+game memory: {'VmRSS': '27288 kB', 'VmSwap': '0 kB', 'Threads': '1'}   system: {'MemAvailable': '13454804 kB', 'SwapFree': '36002620 kB'}
+
+threads, busiest first (CPU % over 1 s; ~100 % = a busy loop, 0 % everywhere = waiting/deadlock):
+      0%  tid 468806  python3          state S  wchan do_wait                  wait4
+
+HD2Dress.log (last 25 lines):
+  [   99.7] [gate]   vs the control flap (world): avg 10.9, min 10.3, max 11.7 deg; flap tip (child bone) in the pelvis frame -0.248 -0.147 0.091
+  [  101.7] [gate] SPRING CHAIN: 41 frames, kept 41, reset 0, other 0 (writes 41, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  101.7] [gate]   vs the control flap (world): avg 11.1, min 10.5, max 11.7 deg; flap tip (child bone) in the pelvis frame -0.248 -0.149 0.096
+  [  103.7] [gate] SPRING CHAIN: 36 frames, kept 36, reset 0, other 0 (writes 36, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  103.7] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.9 deg; flap tip (child bone) in the pelvis frame -0.248 -0.147 0.095
+  [  105.7] [gate] SPRING CHAIN: 38 frames, kept 38, reset 0, other 0 (writes 38, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  105.7] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.8 deg; flap tip (child bone) in the pelvis frame -0.248 -0.147 0.095
+  [  107.7] [gate] SPRING CHAIN: 43 frames, kept 43, reset 0, other 0 (writes 43, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  107.7] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.8 deg; flap tip (child bone) in the pelvis frame -0.248 -0.146 0.095
+  [  109.7] [gate] SPRING CHAIN: 39 frames, kept 39, reset 0, other 0 (writes 39, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  109.7] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.8 deg; flap tip (child bone) in the pelvis frame -0.249 -0.145 0.096
+  [  111.7] [gate] SPRING CHAIN: 43 frames, kept 43, reset 0, other 0 (writes 43, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  111.7] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.8 deg; flap tip (child bone) in the pelvis frame -0.248 -0.146 0.096
+  [  113.8] [gate] SPRING CHAIN: 41 frames, kept 41, reset 0, other 0 (writes 41, fails 0); flap angle 16.7 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  113.8] [gate]   vs the control flap (world): avg 11.0, min 10.1, max 12.1 deg; flap tip (child bone) in the pelvis frame -0.248 -0.146 0.095
+  [  115.8] [gate] SPRING CHAIN: 39 frames, kept 39, reset 0, other 0 (writes 39, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  115.8] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.6 deg; flap tip (child bone) in the pelvis frame -0.249 -0.145 0.095
+  [  117.8] [gate] SPRING CHAIN: 37 frames, kept 37, reset 0, other 0 (writes 37, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  117.8] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.7 deg; flap tip (child bone) in the pelvis frame -0.248 -0.146 0.095
+  [  119.9] [gate] SPRING CHAIN: 38 frames, kept 38, reset 0, other 0 (writes 38, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  119.9] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.7 deg; flap tip (child bone) in the pelvis frame -0.248 -0.146 0.095
+  [  121.9] [gate] SPRING CHAIN: 41 frames, kept 41, reset 0, other 0 (writes 41, fails 0); flap angle 16.6 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  121.9] [gate]   vs the control flap (world): avg 11.0, min 10.3, max 11.8 deg; flap tip (child bone) in the pelvis frame -0.248 -0.146 0.095
+  [  123.9] [gate] SPRING CHAIN: 40 frames, kept 40, reset 0, other 0 (writes 40, fails 0); flap angle 16.7 deg (target 45.0); control: rest rotation, 0.0000 m max drift from the pelvis
+  [  123.9] [gate]   vs the control flap (world): avg 11.0, min 10.1, max 12.3 deg; flap tip (child bone) in the pelvis frame -0.248 -0.145 0.095
+
+HD2Dress_trace.csv (last 5 rows):
+  125.235,5,0.0,19.41,8.28,-0.0486,-0.1423,0.1000,-0.2455,-0.1739,0.0853,-0.0486,-0.1423,-0.1000,1.608,-8.304,20.530,-0.4444,-0.1531,0.0833,15.46
+  125.283,5,0.0,36.04,9.74,-0.0486,-0.1423,0.1000,-0.2281,-0.2305,0.0977,-0.0486,-0.1423,-0.1000,1.486,-8.335,20.554,-0.4276,-0.2166,0.0952,30.16
+  125.331,5,0.0,54.74,32.32,-0.0486,-0.1423,0.1000,-0.1892,-0.2773,0.1447,-0.0486,-0.1423,-0.1000,1.374,-8.361,20.606,-0.3878,-0.3009,0.1499,38.41
+  125.379,5,0.0,57.21,37.49,-0.0486,-0.1423,0.1000,-0.1819,-0.2769,0.1641,-0.0486,-0.1423,-0.1000,1.315,-8.381,20.663,-0.3701,-0.3413,0.1846,28.72
+  125.427,5,0.0,38.96,21.65,-0.0486,-0.1423,0.1000,-0.2217,-0.23
+
+kernel messages (last 2 min, GPU/OOM related):
+  Oct 15 09:31:15 fedora kernel: i915 0000:00:02.0: [drm] Resetting rcs0 for preemption time out
+  Oct 15 09:31:15 fedora kernel: i915 0000:00:02.0: [drm] renderer[469124] context reset due to GPU hang
